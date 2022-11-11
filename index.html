@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+	<html>
+	
+		<head>
+		
+			<title>Floating Header</title>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			
+			<style>
+			
+				#frmContainer  {
+					width: 80%;
+					margin-top: 5%;
+					margin-left: auto;
+					margin-right: auto;
+					border-style: solid;
+					border-width: 1px;
+					border-color: #000000;
+					border-radius: 5px;
+					padding: 5%;
+				}
+				
+				#frmContainer form {
+					display: grid;
+					grid-template-column: 1fr 1fr;
+					padding: 2%;
+					column-gap: 2px;
+					row-gap: 5px;
+				}
+				
+				#frmContainer form input {
+					padding: 18px;
+				}
+				
+				#frmContainer form label {
+					font-weight: bold;
+				}
+				
+				#inputResetContainer {
+					margin-top: 2%;
+				}
+				
+				@media (max-width: 1024px){
+					
+					#frmContainer h3 {
+						position: relative;
+						margin-top: -35px;
+						background-color: #ffffff;
+						text-align: center;
+						width: 50%;
+					}
+					
+				}
+				
+				@media (min-width: 1024px){
+				
+					#frmContainer h3 {
+						position: relative;
+						margin-top: -7%;
+						padding-left: 20px;
+						background-color: #ffffff;
+						width: 40%;
+					}
+					
+				}
+	
+			
+			</style>
+			
+		</head>
+		
+		<body>
+			<main>
+			
+				<nav>
+					<h1>Floating Header Effect</h1>
+				</nav>
+				
+				<section>
+				
+					<h2>This is the form</h2>
+					
+					<div id="frmContainer">
+					
+						<h3>Form Panel</h3>
+					
+						<form>
+						
+							<label for="txtFname">
+								First name:
+							</label>
+							<input type="text" name="txtFname" />
+							
+							<label for="txtSname">
+								Last name:
+							</label>
+							<input type="text" name="txtSname" />
+							
+							<label for="drpBYear">
+								Birth Year:
+							</label>
+							
+							<select id="drpBYear" name="drpBYear">
+							</select>
+							
+							<div id="inputResetContainer">
+								<input type="reset" value="Reset" />
+								<input type="submit" value="Submit" />
+							</div>
+							
+						</form>
+						
+					</div>
+					
+				</section>
+				
+			</main>
+			
+			<script>
+	
+	//	Adds the years to the birthday
+	function AddYearsToBirthday(){
+	
+		//	Set the age limit.
+		var minLimit = 1900;
+		
+		//	The counter;
+		var minLimitCntr = minLimit;
+	
+		//	get the current year
+		var cDate = new Date();
+		var cYear = cDate.getFullYear();
+		
+		//	The drop down box
+		var drpBYear = document.getElementById("drpBYear");
+		
+		//	For every year, create an option and add it to the drop box
+		for(var i = cYear; i > minLimitCntr; i--){
+			
+			var nopt = document.createElement("option");
+			
+			nopt.value = i;
+			nopt.innerHTML = i;
+			
+			drpBYear.add(nopt);
+			
+		}
+	
+	}
+	
+	
+	function init(){
+		AddYearsToBirthday();
+	}
+	
+	init();
+			
+			</script>
+			
+		</body>
+	</html>
